@@ -1,0 +1,272 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Scoop windows下的包管理器 | hugo&#39;s blog</title>
+
+<link rel="shortcut icon" href="https://haoz0x139.github.io/favicon.ico?v=1682664718224">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://haoz0x139.github.io/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            hugo&#39;s blog
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="https://www.aliyun.com/minisite/goods?userCode=v6uxfnwx" class="menu gt-a-link" target="_blank">
+                    阿里云
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1682664718224"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Scoop windows下的包管理器
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-02-02 ·
+                    </time>
+                    
+                        <a href="https://haoz0x139.github.io/tag/Solution/" class="post-tags">
+                            # Solution
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h1 id="scoop-安装">Scoop 安装</h1>
+<h2 id="环境需求">环境需求</h2>
+<ul>
+<li>PowerShell 5 +</li>
+<li>.NET Framework 4.5 +<br>
+<img src="https://user-images.githubusercontent.com/124132611/216545926-1d034692-d7ae-491a-9237-04065711e7e6.jpg" alt="scoop-01" loading="lazy"></li>
+</ul>
+<h1 id="安装">安装</h1>
+<h2 id="指定安装位置配置环境变量">指定安装位置（配置环境变量）</h2>
+<p>以管理员身份打开PowerShell</p>
+<pre><code class="language-yml">$env:SCOOP='D:\Applications\Scoop'
+[Environment]::SetEnvironmentVariable('SCOOP', $env:SCOOP, 'User')
+$env:SCOOP_GLOBAL='F:\GlobalScoopApps'
+[Environment]::SetEnvironmentVariable('SCOOP_GLOBAL', $env:SCOOP_GLOBAL, 'Machine')
+</code></pre>
+<h1 id="安装scoop">安装Scoop</h1>
+<p>首先确保你能访问 raw.githubusercontent.com</p>
+<pre><code class="language-yml">Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+# 或者
+iwr -useb get.scoop.sh | iex
+irm https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/install.ps1 | iex
+irm https://ghproxy.com/raw.githubusercontent.com/duzyn/scoop-cn/master/install.ps1 | iex
+</code></pre>
+<h1 id="scoop-使用">Scoop 使用</h1>
+<h2 id="scoop官方维护的仓库">Scoop官方维护的仓库</h2>
+<ul>
+<li>main - 默认仓库</li>
+<li>extras - 默认仓库的补充超级强大</li>
+<li>games - 看名字就知道啦</li>
+<li>nerd-fonts - Nerd Fonts</li>
+<li>nirsoft - A subset of the 250 Nirsoft apps</li>
+<li>java - Installers for Oracle Java, OpenJDK, Zulu, ojdkbuild, AdoptOpenJDK, Amazon Corretto, BellSoft Liberica &amp; SapMachine</li>
+<li>jetbrains - Installers for all JetBrains utilities and IDEs</li>
+<li>nonportable - Non-portable apps (may require UAC)</li>
+<li>php - Installers for most versions of PHP</li>
+<li>versions - Alternative versions of apps found in other buckets</li>
+</ul>
+<p>可以直接通过scoop bucket add &lt;repo_name&gt;安装</p>
+<p>由于某些原因，每次更新仓库的时间奇慢，所以还是换为国内镜像仓库来增加使用体验</p>
+<h1 id="镜像仓库">镜像仓库</h1>
+<ul>
+<li>
+<p><a href="https://mirror.nju.edu.cn/git/scoop-main.git">main</a></p>
+</li>
+<li>
+<p><a href="https://mirror.nju.edu.cn/git/scoop-extras.git">extras</a></p>
+</li>
+<li>
+<p><a href="https://gitee.com/scoop-bucket/dorado.git">dorado</a></p>
+</li>
+</ul>
+<h1 id="执行以下命令安装必装软件">执行以下命令安装必装软件</h1>
+<pre><code class="language-yml">scoop install aria2 git 7zip
+</code></pre>
+<p>反正你肯定要用到！<br>
+或者</p>
+<pre><code>scoop install https://ghproxy.com/raw.githubusercontent.com/duzyn/scoop-cn/master/bucket/7zip.json
+scoop install https://ghproxy.com/raw.githubusercontent.com/duzyn/scoop-cn/master/bucket/git.json
+scoop install https://ghproxy.com/raw.githubusercontent.com/duzyn/scoop-cn/master/bucket/aria2.json
+</code></pre>
+<p>或者</p>
+<pre><code>scoop install https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/bucket/7zip.json
+scoop install https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/bucket/git.json
+scoop install https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/bucket/aria2.json
+</code></pre>
+<h1 id="对aria2进行设置">对aria2进行设置</h1>
+<pre><code>scoop config aria2-split 3 
+scoop config aria2-max-connection-per-server 3 
+scoop config aria2-min-split-size 1M
+</code></pre>
+<h1 id="对scoop_repo进行更改">对scoop_repo进行更改</h1>
+<pre><code>scoop config SCOOP_REPO https://gitee.com/scoop-bucket/scoop
+</code></pre>
+<h1 id="执行以下命令订阅软件仓库">执行以下命令订阅软件仓库</h1>
+<pre><code>scoop bucket rm main
+scoop bucket add main https://mirror.nju.edu.cn/git/scoop-main.git
+scoop bucket add extras https://mirror.nju.edu.cn/git/scoop-extras.git
+</code></pre>
+<p>以上两个是官方bucket的国内镜像，所有软件建议优先从这里下载。</p>
+<pre><code>scoop bucket add dorado https://gitee.com/scoop-bucket/dorado.git
+</code></pre>
+<h1 id="使用scoop安装常用软件">使用Scoop安装常用软件</h1>
+<pre><code>scoop install 7zip aria2 python vscode typora vlc sumatrapdf
+</code></pre>
+<h1 id="每次添加完仓库记得更新一下">每次添加完仓库记得更新一下！</h1>
+<pre><code>scoop update
+</code></pre>
+<h1 id="另外附上常用命令">另外附上常用命令</h1>
+<pre><code>scoop update  #更新仓库
+scoop update *  #更新所有软件
+scoop list  #列出已安装的软件
+scoop bucket list  #列出已订阅的仓库
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://haoz0x139.github.io/post/WeeklyReport/" class="post-title gt-a-link">
+                    工作周报2023
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">软件工程师，书法爱好者</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://haoz0x139.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
