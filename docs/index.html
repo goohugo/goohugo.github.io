@@ -6,6 +6,7 @@
 <link rel="shortcut icon" href="https://fav.farm/🍂" />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title> Goohugo's Blog </title>
+  <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <script>
 window.config = {
   organization: false,
@@ -18,6 +19,12 @@ window.config = {
   hash: 'ghp_X@Ed!m*H%lnkXzy$m(w@O!#QexSXF&)JqJLKYmxvZy4xMDE2OTEzLnh5eg==',
   perpage: 5,
 }
+   jinrishici.load(function(result) {
+    var sentence = document.querySelector("#poem_sentence")
+    var info = document.querySelector("#poem_info")
+    sentence.innerHTML = result.data.content
+    info.innerHTML = '【' + result.data.origin.dynasty + '】' + result.data.origin.author + '《' + result.data.origin.title + '》'
+  });
 </script>
 <style>
   .loading,
@@ -91,6 +98,8 @@ window.config = {
   <div id="user"></div>
   <div id="posts"></div>
   </div>
+  <div id="poem_sentence"></div>
+  <div id="poem_info"></div>
 </div>
 <div class="page single">
   <div>
