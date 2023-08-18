@@ -109,8 +109,7 @@
 
         //扫码解析成功后按照自己的需求做后续的操作
         function onScanSuccess(decodedText, decodedResult) {
-		var url = "http://card.zhanshishop.cn:9090/?kh="
-		window.open（url + "?kh="+decodedText， "_blank"）
+		window.location.href="http://card.zhanshishop.cn:9090/?kh="+decodedText
             //res.innerText = decodedText;
         }
 
